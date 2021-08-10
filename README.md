@@ -1,6 +1,6 @@
 # Pokemon colorscripts
 
-some scripts to print out images of pokemons to terminal. Inspired by
+A script to print out images of pokemon to the terminal. Inspired by
 [DT's colorscripts compilation](https://gitlab.com/dwt1/shell-color-scripts)
 
 ## Description
@@ -10,11 +10,11 @@ almost 900 pokemon from gen 1 to gen 8. Has all the pokemons you could ever want
 
 ## Visuals
 ### Demo GIFs
-demo of the program being used
+Demo of the program being used
 
 ![demo of program in action](./demo_images/colorscript-demo.gif)
 
-demo of the program running on terminal startup.
+Demo of the program running on terminal startup.
 
 ![demo of random pokemons on terminal spawn](./demo_images/poke_demo.gif)
 
@@ -25,14 +25,14 @@ demo of the program running on terminal startup.
 
 ## Requirements
 The program itself is just a shell script that prints out custom color formatted
-text files.So as long as you have a POSIX compliant shell like dash,bash,zsh etc.
-as your `/bin/sh` the script should work.
+text files. So as long as you have a POSIX compliant shell like dash, bash, zsh etc.
+As your shell the script should work.
 You will however need a terminal with true color support, which most
 modern terminals have. More on terminals and color support can be found in
 [this gist](https://gist.github.com/XVilka/8346728)
 
 ## Installation
-Download the code from this repository or use git clone
+Clone or download the repository
 ```
 git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 ```
@@ -41,7 +41,7 @@ git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 cd pokemon-colorscripts
 sudo ./install.sh
 ```
-now the program should be installed. You can check this by running
+Now the program should be installed. You can check this by running
 ```
 pokemon-colorscripts
 ```
@@ -61,43 +61,43 @@ Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
                         doubt
 ```
 
-example of printing out a specific pokemon
+Example of printing out a specific pokemon
 ```
 pokemon-colorscripts -n charizard
 ```
-example of printing out a random pokemon
+Example of printing out a random pokemon
 ```
 pokemon-colorscripts -r
 ```
 Some pokemon with spaces or periods or other special characters in their name
-might not be spelled as expected some examples include
+might not be spelled as expected, some examples include:
 ```
-farfetch'd->farfetchd
-mr.mime->mr-mime
+farfetch'd -> farfetchd
+mr.mime -> mr-mime
 ```
-these are rare exceptions and if required you can parse the `--list` page to see
+These are rare exceptions, and if required you can parse the `--list` page to see
 the names of all the pokemon.
 
-### running on terminal startup
+### Running on terminal startup
 You can display a random pokemon whenever a terminal gets launched by adding
 the `pokemon-colorscripts -r` command to your *.bash_profile* or .*zsh_profile*.
 
-### location of the files
-The final files for the program are located in opt/pokemon-colorscripts/ with the script
-being symlinked to usr/bin/
+### Location of the files
+The program is located at /opt/pokemon-colorscripts/ with the script being symlinked to /usr/bin/
 
 ## How it works
 The program itself is a simple bash script that prints out text files corresponding
 to the relevant pokemon or a randomly selected pokemon. The textfiles formatted with
-appropriate colors can be found in the *colorscripts* folder of the repo. The sprites
+appropriate colors can be found in the *colorscripts* folder. The sprites
 were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text
 files using a custom python script after some preprocessing. A simple script to
-scrape and download all the sprites, and the python script to convert these sprites into properly formatted and colored
-text files are also included in the repo and can be found in the *generator_scripts* folder.
+scrape and download all the sprites, and a python script to convert these sprites into properly formatted and colored
+text files, they are also included in the repo and can be found in the *generator_scripts* folder.
 
 ## Author
 Phoney badger:
 https://gitlab.com/phoneybadger
+
 ## License
 The MIT License (MIT)
 
