@@ -32,6 +32,26 @@ modern terminals have. More on terminals and color support can be found in
 [this gist](https://gist.github.com/XVilka/8346728)
 
 ## Installation
+
+### On Arch or Arch based distros
+The utility is available as an AUR package
+[pokemon-colorscripts-git](https://aur.archlinux.org/packages/pokemon-colorscripts-git).
+You can install this manually or using an AUR helper. For manual installation,
+download the PKGBUILD file from this repository. Then run
+```
+makepkg -cf
+```
+which will create a .pkg.tar.zst file. Then run
+```
+sudo pacman -U <filename.pkg.tar.zst>
+```
+
+Or you can use an AUR Helper such as yay and run
+```
+yay -S pokemon-colorscripts-git
+```
+
+### On other distros
 Clone or download the repository
 ```
 git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
