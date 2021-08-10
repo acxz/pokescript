@@ -1,4 +1,4 @@
-# Maintainer: Phoney Badger <badgerphoney@gmail.com>
+# Maintainer: Phoney Badger <badgerphoney at gmail dot com>
 pkgname=pokemon-colorscripts-git
 _pkgname=pokemon-colorscripts
 pkgver=1
