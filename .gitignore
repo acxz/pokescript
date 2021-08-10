@@ -9,3 +9,6 @@ images
 
 # ignore testing files
 test_*
+
+# ignoring package source info files
+.SRCINFO
