@@ -1,6 +1,6 @@
 # Pokemon colorscripts
 
-Script to print out images of pokemons to terminal. Inspired by
+A script to print out images of pokemon to terminal. Inspired by
 [DT's colorscripts compilation](https://gitlab.com/dwt1/shell-color-scripts)
 
 ## Description
