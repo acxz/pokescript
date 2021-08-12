@@ -81,7 +81,7 @@ git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 `cd` into the directory and run the install script
 ```
 cd pokemon-colorscripts
-sudo ./install-mac.sh
+sudo ./install.sh
 ```
 
 Restart the terminal.
