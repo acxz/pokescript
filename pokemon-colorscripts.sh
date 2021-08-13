@@ -1,8 +1,7 @@
 #!/bin/sh
 
 OS=$(uname)
-PROGRAM=$(readlink -f "$0")
-test $OS == 'Darwin' && PROGRAM=$(greadlink -f "$0")
+test $OS == 'Darwin' && PROGRAM=$(greadlink -f "$0") || PROGRAM=$(readlink -f "$0")
 
 PROGRAM_DIR=$(dirname "$PROGRAM")
 # directory where all the art files exist
@@ -35,8 +34,7 @@ _show_random_pokemon(){
     NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
     # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
 
-    random_index=$(shuf -i 1-"$NUM_ART" -n 1)
-    test $OS == 'Darwin' && random_index=$(gshuf -i 1-"$NUM_ART" -n 1)
+    test $OS == 'Darwin' && random_index=$(gshuf -i 1-"$NUM_ART" -n 1) || random_index=$(shuf -i 1-"$NUM_ART" -n 1)
 
     random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
     echo $random_pokemon
