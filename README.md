@@ -26,7 +26,8 @@ Demo of the program running on terminal startup.
 ## Requirements
 The program itself is just a shell script that prints out custom color formatted
 text files. So as long as you have a POSIX compliant shell like dash, bash, zsh etc.
-As your shell the script should work.
+as your shell and have coreutils (might not be present on your system if using
+MacOs. See installation instructions for MacOS for more details), the script should work.
 You will however need a terminal with true color support, which most
 modern terminals have. More on terminals and color support can be found in
 [this gist](https://gist.github.com/XVilka/8346728)
@@ -123,14 +124,25 @@ These are rare exceptions, and if required you can parse the `--list` page to se
 the names of all the pokemon.
 
 ### Running on terminal startup
+## On Bash and ZSH
 You can display a random pokemon whenever a terminal gets launched by adding
-the `pokemon-colorscripts -r` command to your *.bash_profile* or .*zsh_profile*.
+the `pokemon-colorscripts -r` command to your *.bashrc* or .*zshrc*.
+
+## On Fish
+If you have fish as your user shell you can display a random pokemon on terminal
+startup by overriding the `fish_greeting` in your `config.fish`
+```
+function fish_greeting
+     pokemon-colorscripts -r
+end
+```
+A more advaced setup combining multiple colorscripts can be found on pokemon-colorscripts#2
 
 ### Location of the files
 The program is located at /opt/pokemon-colorscripts/ with the script being symlinked to /usr/bin/
 
 ## How it works
-The program itself is a simple bash script that prints out text files corresponding
+The program itself is a simple shell script that prints out text files corresponding
 to the relevant pokemon or a randomly selected pokemon. The textfiles formatted with
 appropriate colors can be found in the *colorscripts* folder. The sprites
 were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text
