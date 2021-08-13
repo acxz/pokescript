@@ -65,7 +65,31 @@ Now the program should be installed. You can check this by running
 ```
 pokemon-colorscripts
 ```
-which should print out the help page for the program
+Which should print out the help page for the program
+
+### MacOS
+
+Make sure coreutils are installed
+```sh
+brew install coreutils
+```
+
+Clone or download the repository
+```
+git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
+```
+`cd` into the directory and run the install script
+```
+cd pokemon-colorscripts
+sudo ./install.sh
+```
+
+Restart the terminal.
+Now the program should be installed. You can check this by running
+```
+pokemon-colorscripts
+```
+Which should print out the help page for the program
 
 ## Usage
 You can run the program from the command line to either display a pokemon of your
