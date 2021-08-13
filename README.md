@@ -3,7 +3,7 @@
 A script to print out images of pokemon to the terminal. Inspired by
 [DT's colorscripts compilation](https://gitlab.com/dwt1/shell-color-scripts)
 
-##Table of contents
+## Table of contents
 [[_TOC_]]
 
 ## Description
