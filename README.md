@@ -3,6 +3,7 @@
 A script to print out images of pokemon to the terminal. Inspired by
 [DT's colorscripts compilation](https://gitlab.com/dwt1/shell-color-scripts)
 
+##Table of contents
 [[_TOC_]]
 
 ## Description
@@ -140,8 +141,8 @@ end
 ```
 A more advaced setup combining multiple colorscripts can be found on pokemon-colorscripts#2
 
-### Location of the files
-The program is located at /opt/pokemon-colorscripts/ with the script being symlinked to /usr/bin/
+## Location of the files
+The program is located at usr/local/opt/pokemon-colorscripts/ with the script being symlinked to /usr/local/bin/
 
 ## How it works
 The program itself is a simple shell script that prints out text files corresponding
