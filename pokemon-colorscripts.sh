@@ -1,7 +1,13 @@
 #!/bin/sh
 
+# Checking the OS so as to use mac specific utilities on MacOS
 OS=$(uname)
-test $OS == 'Darwin' && PROGRAM=$(greadlink -f "$0") || PROGRAM=$(readlink -f "$0")
+if [ $OS = 'Darwin' ]
+then
+    PROGRAM=$(greadlink -f "$0")
+else
+    PROGRAM=$(readlink -f "$0")
+fi
 
 PROGRAM_DIR=$(dirname "$PROGRAM")
 # directory where all the art files exist
@@ -34,7 +40,13 @@ _show_random_pokemon(){
     NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
     # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
 
-    test $OS == 'Darwin' && random_index=$(gshuf -i 1-"$NUM_ART" -n 1) || random_index=$(shuf -i 1-"$NUM_ART" -n 1)
+    # Using mac coreutils if on MacOS
+    if [ $OS = 'Darwin' ]
+    then
+        random_index=$(gshuf -i 1-"$NUM_ART" -n 1)
+    else
+        random_index=$(shuf -i 1-"$NUM_ART" -n 1)
+    fi
 
     random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
     echo $random_pokemon
