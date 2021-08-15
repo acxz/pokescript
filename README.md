@@ -127,11 +127,11 @@ These are rare exceptions, and if required you can parse the `--list` page to se
 the names of all the pokemon.
 
 ### Running on terminal startup
-## On Bash and ZSH
+#### On Bash and ZSH
 You can display a random pokemon whenever a terminal gets launched by adding
 the `pokemon-colorscripts -r` command to your *.bashrc* or .*zshrc*.
 
-## On Fish
+#### On Fish
 If you have fish as your user shell you can display a random pokemon on terminal
 startup by overriding the `fish_greeting` in your `config.fish`
 ```
