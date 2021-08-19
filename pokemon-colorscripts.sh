@@ -49,20 +49,20 @@ _show_random_pokemon(){
 
     # if there are no arguments show across all generations
     if [ $# = 0 ]; then
-        min_index=1
-        max_index=$NUM_ART
+        start_index=1
+        end_index=$NUM_ART
     elif [ $# = 1 ]; then
-        min_index=$(_get_min_index $1)
-        max_index=$(_get_max_index $1)
+        start_index=$(_get_start_index $1)
+        end_index=$(_get_end_index $1)
     fi
 
-    # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
+    # getting a random index (using shuf instead of $RANDOM for POSIX compliance)
     # Using mac coreutils if on MacOS
     if [ $OS = 'Darwin' ]
     then
-        random_index=$(gshuf -i "$min_index"-"$max_index" -n 1)
+        random_index=$(gshuf -i "$start_index"-"$end_index" -n 1)
     else
-        random_index=$(shuf -i "$min_index"-"$max_index" -n 1)
+        random_index=$(shuf -i "$start_index"-"$end_index" -n 1)
     fi
 
     random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
@@ -72,8 +72,7 @@ _show_random_pokemon(){
     cat "$POKEART_DIR/$random_pokemon.txt"
 }
 
-# Get the ending index of a generation in the nameslist
-_get_max_index(){
+_get_end_index(){
     local i=0
     local gen=$1
     for index in $indices; do
@@ -85,8 +84,7 @@ _get_max_index(){
     done
 }
 
-# Get the starting index of the generation in the nameslist
-_get_min_index(){
+_get_start_index(){
     local i=0
     local gen=$1
     for index in $indices; do
