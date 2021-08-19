@@ -100,13 +100,15 @@ You can run the program from the command line to either display a pokemon of you
 choice by specifying the pokemon name or make it display a random pokemon.
 ```
 Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
-  -h, --help, help    	Print this help.
-  -l, --list, list    	Print list of all pokemon
-  -r, --random, random	Show a random pokemon
-  -n, --name          	Select pokemon by name. Generally spelled like in the games.
-                        a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
-                        type-null etc. Perhaps grep the output of --list if in
-                        doubt
+    "-h, --help, help" "Print this help." \
+    "-l, --list, list" "Print list of all pokemon"\
+    "-r, --random, random" "Show a random pokemon. This flag can optionally be
+                    followed by a generation number (1-8) to show random
+                    pokemon from a specific generation."\
+    "-n, --name" "Select pokemon by name. Generally spelled like in the games.
+                    a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
+                    type-null etc. Perhaps grep the output of --list if in
+                    doubt"
 ```
 
 Example of printing out a specific pokemon
@@ -116,6 +118,10 @@ pokemon-colorscripts -n charizard
 Example of printing out a random pokemon
 ```
 pokemon-colorscripts -r
+```
+Example of printing out a random pokemon from generation 1
+```
+pokemon-colorscripts -r 1
 ```
 Some pokemon with spaces or periods or other special characters in their name
 might not be spelled as expected, some examples include:

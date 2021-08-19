@@ -25,7 +25,9 @@ _help(){
     printf "${fmt_help}" \
         "-h, --help, help" "Print this help." \
         "-l, --list, list" "Print list of all pokemon"\
-        "-r, --random, random" "Show a random pokemon"\
+        "-r, --random, random" "Show a random pokemon. This flag can optionally be
+                        followed by a generation number (1-8) to show random
+                        pokemon from a specific generation."\
         "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                         a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                         type-null etc. Perhaps grep the output of --list if in
