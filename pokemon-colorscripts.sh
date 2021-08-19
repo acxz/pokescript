@@ -135,7 +135,12 @@ case "$#" in
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         elif [ "$1" = -r ]||[ "$1" = '--random' ]||[ "$1" = 'random' ]; then
-            _show_random_pokemon "$2"
+            if [ "$2" -le 8 ]&&[ "$2" -ge 1 ]; then
+                _show_random_pokemon "$2"
+            else
+                echo "Invalid generation"
+                exit 1
+            fi
         else
             echo "Input error"
             exit 1
