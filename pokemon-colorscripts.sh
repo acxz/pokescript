@@ -33,19 +33,34 @@ _help(){
     echo "Example: 'pokemon-colorscripts --name pikachu'"
 }
 
+
+# Index values where the different generations are seperated in the names list
+# Cannot think of a better way to do arrays with narrow POSIX compliance
+# 0-151 gen 1, 810-898 gen 8
+indices="1 152 251 387 494 650 722 810 898"
+
 _show_random_pokemon(){
     #selecting a random art file from the whole set
 
     # total number of art files present
     NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
-    # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
 
+    # if there are no arguments show across all generations
+    if [ $# = 0 ]; then
+        min_index=1
+        max_index=$NUM_ART
+    elif [ $# = 1 ]; then
+        min_index=$(_get_min_index $1)
+        max_index=$(_get_max_index $1)
+    fi
+
+    # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
     # Using mac coreutils if on MacOS
     if [ $OS = 'Darwin' ]
     then
-        random_index=$(gshuf -i 1-"$NUM_ART" -n 1)
+        random_index=$(gshuf -i "$min_index"-"$max_index" -n 1)
     else
-        random_index=$(shuf -i 1-"$NUM_ART" -n 1)
+        random_index=$(shuf -i "$min_index"-"$max_index" -n 1)
     fi
 
     random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
@@ -55,6 +70,31 @@ _show_random_pokemon(){
     cat "$POKEART_DIR/$random_pokemon.txt"
 }
 
+# Get the ending index of a generation in the nameslist
+_get_max_index(){
+    local i=0
+    local gen=$1
+    for index in $indices; do
+        if [ "$i" = "$gen" ]; then
+            echo $index
+            break
+        fi
+        i=$((i + 1))
+    done
+}
+
+# Get the starting index of the generation in the nameslist
+_get_min_index(){
+    local i=0
+    local gen=$1
+    for index in $indices; do
+        if [ "$i" = "$((gen-1))" ]; then
+            echo $index
+            break
+        fi
+        i=$((i + 1))
+    done
+}
 _show_pokemon_by_name(){
     pokemon_name=$1
     echo $pokemon_name
@@ -94,6 +134,8 @@ case "$#" in
     2)
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
+        elif [ "$1" = -r ]||[ "$1" = '--random' ]||[ "$1" = 'random' ]; then
+            _show_random_pokemon "$2"
         else
             echo "Input error"
             exit 1
