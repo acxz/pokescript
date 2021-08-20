@@ -1,0 +1,66 @@
+.TH "POKEMON-COLORSCRIPTS" "1" "2021-08-20" "GNU" "User Commands"
+
+.SH "NAME"
+.PP
+pokemon-colorscripts - display unicode sprites of pokemon in the terminal
+
+.SH "SYNOPSIS"
+.PP
+.B pokemon-colorscripts
+.RB [-h|--help|help]
+.RB [-l|--list|list]
+.RB [-r|--random|random
+.IR generation ]
+.RB [-n|--name
+.IR name]
+
+.SH "DESCRIPTION"
+.PP
+Pokemon-colorscripts is a CLI utility written in shell script that prints out
+unicode sprites of pokemon to the terminal. Almost all pokemon generations 1-8
+are available (except may be shiny pokemon or different forms). You can select
+specific pokemon to be printed out by name or let the script choose a pokemon
+randomly. While choosing randomly you can also filter by generation.
+
+.SH "OPTIONS"
+.TP
+.B "-h, --help, help"
+Print help.
+.TP
+.B "-l, --list, list"
+List all available pokemon.
+.TP
+\fB -r, --random, random\fR \fI generation\fR
+Select a pokemon at random and print it out. Can be followed by an optional
+generation number 1-8 to print out random pokemon from a specific generation.
+If no generation is specified, selects from full list of available pokemon.
+.TP
+\fB -n, --name\fR \fI name\fR
+Select a specific pokemon to print out by name. Most pokemon are spelled as
+expected. A few pokemon with some special characters in their names might be spelled
+slightly differently. Examples nidoran-f,nidoran-m,farfetchd,mr-mime etc. You can
+check the output of the\fB list\fR option if in doubt.
+
+.SH "FILES"
+.TP
+All the files are present in the directory
+"/usr/local/opt/pokemon-colorscripts"
+.TP
+with the executable script being symlinked to
+"/usr/local/bin/pokemon-colorscripts"
+
+.SH "EXAMPLES"
+.SS "pokemon-colorscripts -r"
+.PP
+Prints out a random pokemon. Add this command to your shell config file (.bashrc, .zshrc, fish.config
+etc.) to print out a random pokemon every time you open the terminal.
+.SS "pokemon-colorscripts -r 1"
+.PP
+Print out a random pokemon from generation 1.
+.SS "pokemon-colorscripts -l"
+.PP
+Print out all available pokemon names.
+.SS "pokemon-colorscripts -n chikorita"
+.PP
+Print out the pokemon chikorita.
+
