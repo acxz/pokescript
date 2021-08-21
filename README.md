@@ -103,8 +103,8 @@ Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
     "-h, --help, help" "Print this help." \
     "-l, --list, list" "Print list of all pokemon"\
     "-r, --random, random" "Show a random pokemon. This flag can optionally be
-                    followed by a generation number (1-8) to show random
-                    pokemon from a specific generation."\
+                    followed by a generation number or range (1-8) to show random
+                    pokemon from a specific generation or range of generations."\
     "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                     a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                     type-null etc. Perhaps grep the output of --list if in
@@ -122,6 +122,10 @@ pokemon-colorscripts -r
 Example of printing out a random pokemon from generation 1
 ```
 pokemon-colorscripts -r 1
+```
+Example of printing out a random pokemon from generations 1-3
+```
+pokemon-colorscripts -r 1-3
 ```
 Some pokemon with spaces or periods or other special characters in their name
 might not be spelled as expected, some examples include:

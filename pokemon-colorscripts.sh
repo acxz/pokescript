@@ -26,8 +26,8 @@ _help(){
         "-h, --help, help" "Print this help." \
         "-l, --list, list" "Print list of all pokemon"\
         "-r, --random, random" "Show a random pokemon. This flag can optionally be
-                        followed by a generation number (1-8) to show random
-                        pokemon from a specific generation."\
+                        followed by a generation number or range (1-8) to show random
+                        pokemon from a specific generation or range of generations."\
         "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                         a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                         type-null etc. Perhaps grep the output of --list if in
@@ -51,9 +51,9 @@ _show_random_pokemon(){
     if [ $# = 0 ]; then
         start_index=1
         end_index=$NUM_ART
-    elif [ $# = 1 ]; then
+    else
         start_index=$(_get_start_index $1)
-        end_index=$(_get_end_index $1)
+        end_index=$(_get_end_index $2)
     fi
 
     # getting a random index (using shuf instead of $RANDOM for POSIX compliance)
@@ -135,8 +135,11 @@ case "$#" in
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         elif [ "$1" = -r ]||[ "$1" = '--random' ]||[ "$1" = 'random' ]; then
-            if [ "$2" -le 8 ]&&[ "$2" -ge 1 ]; then
-                _show_random_pokemon "$2"
+            generation=$2
+            start_gen=${generation%-*}
+            end_gen=${generation#*-}
+            if [ "$end_gen" -le 8 ]&&[ "$start_gen" -ge 1 ]; then
+                _show_random_pokemon "$start_gen" "$end_gen"
             else
                 echo "Invalid generation"
                 exit 1
