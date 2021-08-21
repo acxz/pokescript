@@ -28,6 +28,7 @@ package() {
     install -Dm755 pokemon-colorscripts.sh "$pkgdir/usr/local/opt/$_pkgname/pokemon-colorscripts.sh"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 pokemon-colorscripts.1 "$pkgdir/usr/local/man/man1/pokemon-colorscripts.1"
     # creating symlink in usr/local/bin
     ln -sf "/usr/local/opt/$_pkgname/pokemon-colorscripts.sh" "$pkgdir/usr/local/bin/pokemon-colorscripts"
 }
