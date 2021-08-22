@@ -44,17 +44,31 @@ indices="1 152 251 387 494 650 722 810 898"
 _show_random_pokemon(){
     #selecting a random art file from the whole set
 
-    # total number of art files present
-    NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
-
     # if there are no arguments show across all generations
     if [ $# = 0 ]; then
-        start_index=1
-        end_index=$NUM_ART
+        start_gen=1
+        end_gen=8
+    elif [ $# = 1 ]; then
+        generation=$1
+        start_gen=${generation%-*}
+        end_gen=${generation#*-}
     else
-        start_index=$(_get_start_index $1)
-        end_index=$(_get_end_index $2)
+        generations=$@
+        if [ $OS = 'Darwin' ]; then
+            start_gen=$(gshuf -e $generations -n 1)
+        else
+            start_gen=$(shuf -e $generations -n 1)
+        fi
+        end_gen=$start_gen
     fi
+
+    if [ "$end_gen" -gt 8 ]||[ "$start_gen" -lt 1 ]; then
+        echo "Invalid generation"
+        exit 1
+    fi
+
+    start_index=$(_get_start_index $start_gen)
+    end_index=$(_get_end_index $end_gen)
 
     # getting a random index (using shuf instead of $RANDOM for POSIX compliance)
     # Using mac coreutils if on MacOS
@@ -131,26 +145,15 @@ case "$#" in
         esac
         ;;
 
-    2)
+    *)
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         elif [ "$1" = -r ]||[ "$1" = '--random' ]||[ "$1" = 'random' ]; then
-            generation=$2
-            start_gen=${generation%-*}
-            end_gen=${generation#*-}
-            if [ "$end_gen" -le 8 ]&&[ "$start_gen" -ge 1 ]; then
-                _show_random_pokemon "$start_gen" "$end_gen"
-            else
-                echo "Invalid generation"
-                exit 1
-            fi
+            shift
+            _show_random_pokemon $@
         else
-            echo "Input error"
+            echo "Input error, too many arguments."
             exit 1
         fi
-        ;;
-    *)
-        echo "Input error, too many arguments."
-        exit 1
         ;;
 esac
