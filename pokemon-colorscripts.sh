@@ -26,8 +26,8 @@ _help(){
         "-h, --help, help" "Print this help." \
         "-l, --list, list" "Print list of all pokemon"\
         "-r, --random, random" "Show a random pokemon. This flag can optionally be
-                        followed by a generation number (1-8) to show random
-                        pokemon from a specific generation."\
+                        followed by a generation number or range (1-8) to show random
+                        pokemon from a specific generation or range of generations."\
         "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                         a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                         type-null etc. Perhaps grep the output of --list if in
@@ -44,17 +44,31 @@ indices="1 152 251 387 494 650 722 810 898"
 _show_random_pokemon(){
     #selecting a random art file from the whole set
 
-    # total number of art files present
-    NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
-
     # if there are no arguments show across all generations
     if [ $# = 0 ]; then
-        start_index=1
-        end_index=$NUM_ART
+        start_gen=1
+        end_gen=8
     elif [ $# = 1 ]; then
-        start_index=$(_get_start_index $1)
-        end_index=$(_get_end_index $1)
+        generation=$1
+        start_gen=${generation%-*}
+        end_gen=${generation#*-}
+    else
+        generations=$@
+        if [ $OS = 'Darwin' ]; then
+            start_gen=$(gshuf -e $generations -n 1)
+        else
+            start_gen=$(shuf -e $generations -n 1)
+        fi
+        end_gen=$start_gen
     fi
+
+    if [ "$end_gen" -gt 8 ]||[ "$start_gen" -lt 1 ]; then
+        echo "Invalid generation"
+        exit 1
+    fi
+
+    start_index=$(_get_start_index $start_gen)
+    end_index=$(_get_end_index $end_gen)
 
     # getting a random index (using shuf instead of $RANDOM for POSIX compliance)
     # Using mac coreutils if on MacOS
@@ -131,23 +145,15 @@ case "$#" in
         esac
         ;;
 
-    2)
+    *)
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         elif [ "$1" = -r ]||[ "$1" = '--random' ]||[ "$1" = 'random' ]; then
-            if [ "$2" -le 8 ]&&[ "$2" -ge 1 ]; then
-                _show_random_pokemon "$2"
-            else
-                echo "Invalid generation"
-                exit 1
-            fi
+            shift
+            _show_random_pokemon $@
         else
-            echo "Input error"
+            echo "Input error, too many arguments."
             exit 1
         fi
-        ;;
-    *)
-        echo "Input error, too many arguments."
-        exit 1
         ;;
 esac
