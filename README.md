@@ -127,6 +127,10 @@ Example of printing out a random pokemon from generations 1-3
 ```
 pokemon-colorscripts -r 1-3
 ```
+Example of printing out a random pokemon from generations 1,3 and 6
+```
+pokemon-colorscripts -r 1 3 6
+```
 Some pokemon with spaces or periods or other special characters in their name
 might not be spelled as expected, some examples include:
 ```

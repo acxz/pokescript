@@ -48,10 +48,12 @@ _show_random_pokemon(){
     if [ $# = 0 ]; then
         start_gen=1
         end_gen=8
+    # show from single generation or continuous range of generations
     elif [ $# = 1 ]; then
         generation=$1
         start_gen=${generation%-*}
         end_gen=${generation#*-}
+    # show from list of generations
     else
         generations=$@
         if [ $OS = 'Darwin' ]; then
