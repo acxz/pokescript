@@ -104,7 +104,9 @@ Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
     "-l, --list, list" "Print list of all pokemon"\
     "-r, --random, random" "Show a random pokemon. This flag can optionally be
                     followed by a generation number or range (1-8) to show random
-                    pokemon from a specific generation or range of generations."\
+                    pokemon from a specific generation or range of generations.
+                    The generations can be provided as a continuous range (eg. 1-3)
+                    or as a list of generations (eg. 1 3 6)"\
     "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                     a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                     type-null etc. Perhaps grep the output of --list if in
