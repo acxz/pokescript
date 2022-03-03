@@ -8,8 +8,8 @@ A script to print out images of pokemon to the terminal. Inspired by
 
 ## Description
 Prints out colored unicode sprites of pokemon onto your terminal. Contains
-almost 900 pokemon from gen 1 to gen 8. Has all the pokemons you could ever want
-(okay it doesn't have shiny pokemon or different forms, but cut me some slack)
+almost 900 pokemon from gen 1 to gen 8. Has all the pokemons you could ever want, including shinies
+(okay it doesn't have the different forms, but cut me some slack)
 
 ## Visuals
 ### Demo GIFs
@@ -110,12 +110,17 @@ Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
     "-n, --name" "Select pokemon by name. Generally spelled like in the games.
                     a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                     type-null etc. Perhaps grep the output of --list if in
-                    doubt"
+                    doubt. This flag can optionally be followed by -s or --shiny to print
+                    the shiny version of the pokemon instead""
 ```
 
 Example of printing out a specific pokemon
 ```
 pokemon-colorscripts -n charizard
+```
+Example of printing out a specific shiny pokemon
+```
+pokemon-colorscripts -n spheal -s
 ```
 Example of printing out a random pokemon
 ```

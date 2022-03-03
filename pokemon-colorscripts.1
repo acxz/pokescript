@@ -12,7 +12,8 @@ pokemon-colorscripts - display unicode sprites of pokemon in the terminal
 .RB [-r|--random|random
 .IR generation ]
 .RB [-n|--name
-.IR name]
+.IR name
+.RB [-s|--shiny]]
 
 .SH "DESCRIPTION"
 .PP
@@ -36,11 +37,12 @@ generation number or range 1-8 to print out random pokemon from a specific
 generation or range of generations.
 If no generation is specified, selects from full list of available pokemon.
 .TP
-\fB -n, --name\fR \fI name\fR
+\fB -n, --name\fR \fI name\fR -s, --shiny
 Select a specific pokemon to print out by name. Most pokemon are spelled as
 expected. A few pokemon with some special characters in their names might be spelled
 slightly differently. Examples nidoran-f,nidoran-m,farfetchd,mr-mime etc. You can
-check the output of the\fB list\fR option if in doubt.
+check the output of the\fB list\fR option if in doubt. This flag can optionally be
+followed by -s or --shiny to print the shiny version of the pokemon instead"
 
 .SH "FILES"
 .TP
@@ -70,4 +72,6 @@ Print out all available pokemon names.
 .SS "pokemon-colorscripts -n chikorita"
 .PP
 Print out the pokemon chikorita.
-
+.SS "pokemon-colorscripts -n mudkip -s"
+.PP
+Print out the shiny version of mudkip.
