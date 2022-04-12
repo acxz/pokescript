@@ -180,6 +180,7 @@ pokemon sprites to the terminal. You can check out these really cool projects as
 well
 - [pokeget](https://github.com/talwat/pokeget)
 - [pokeshell](https://github.com/acxz/pokeshell)
+
 more details and my thoughts on both projects can be found on [similar_projects.md](./similar_projects.md)
 
 ## Author
