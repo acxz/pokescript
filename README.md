@@ -174,6 +174,14 @@ files using a custom python script after some preprocessing. A simple script to
 scrape and download all the sprites, and a python script to convert these sprites into properly formatted and colored
 text files, they are also included in the repo and can be found in the *generator_scripts* folder.
 
+## Similar projects
+`pokemon-colorscripts` is not the exclusive nor the first program to print out
+pokemon sprites to the terminal. You can check out these really cool projects as
+well
+- [pokeget](https://github.com/talwat/pokeget)
+- [pokeshell](https://github.com/acxz/pokeshell)
+more details and my thoughts on both projects can be found on [similar_projects.md](./similar_projects.md)
+
 ## Author
 Phoney badger:
 https://gitlab.com/phoneybadger
